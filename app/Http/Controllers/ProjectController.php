@@ -15,9 +15,8 @@ class ProjectController extends Controller
     public function destroy($id){
         $project = Project::find($id);
 
-        $projectType = $project->type;
         $project -> delete();
-        $projectType -> delete();
+        
 
         return redirect() -> route('index');
     }

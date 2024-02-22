@@ -19,12 +19,20 @@ class ProjectTableSeeder extends Seeder
     {
         $types = Type::all();
 
-        // Crea e associa un progetto per ciascun tipo
+        // Crea e associa un progetto per ciascun tipo però in base al count del typeseeder
+        // $types->each(function ($type) {
+        //     $project = Project::factory()->make();
+        //     $project->type()->associate($type);
+        //     $project->save();
+        // });
+        // Crea e associa un progetto per ciascun tipo però in base al count del projectseeder
         $types->each(function ($type) {
-            $project = Project::factory()->make();
-            $project->type()->associate($type);
-            $project->save();
+            $projects = Project::factory()->count(10)->make();
+            
+            $projects->each(function ($project) use ($type) {
+                $project->type()->associate($type);
+                $project->save();
+            });
         });
-
     }
 }
