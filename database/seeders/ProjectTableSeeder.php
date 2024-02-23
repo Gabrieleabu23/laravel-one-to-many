@@ -27,7 +27,7 @@ class ProjectTableSeeder extends Seeder
         // });
 
         // Crea e associa un progetto per ciascun tipo però in base al count del projectseeder
-        // succede projectCount*typeCount ... in questo caso 10 progetti * i tipi esistenti(2) = 20 risultato
+        // succede projectCount*typeCount ... in questo caso 10 progetti * i tipi esistenti(2) = 20
         $types->each(function ($type) {
             $projects = Project::factory()->count(10)->make();
             
